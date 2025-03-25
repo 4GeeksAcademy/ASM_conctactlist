@@ -1,16 +1,25 @@
-import rigoImageUrl from "../assets/img/rigo-baby.jpg";
-import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import React, { useEffect } from "react";
+import useGlobalReducer from "../hooks/useGlobalReducer";
+import ContactList from "../components/ContactList";
 
 export const Home = () => {
+    const { store, getContacts, dispatch } = useGlobalReducer();
 
-  const {store, dispatch} =useGlobalReducer()
+    useEffect(() => {
+        getContacts();
+    }, []);
 
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-		</div>
-	);
-}; 
+    const deleteContact = (contactId) => {
+        dispatch({ type: "delete_contact", payload: contactId });
+    };
+
+    return (
+        <div className="container mt-4">
+            <h2>Contact List</h2>
+            <ContactList 
+                contacts={store.contacts} 
+                deleteContact={deleteContact} 
+            />
+        </div>
+    );
+};
