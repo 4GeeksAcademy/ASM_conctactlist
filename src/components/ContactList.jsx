@@ -5,12 +5,8 @@ function ContactList({ contacts, deleteContact }) {
     return (
         <div>
             {contacts.length > 0 ? (
-                contacts.map(contact => (
-                    <ContactCard 
-                        key={contact.id} 
-                        contact={contact} 
-                        deleteContact={deleteContact} 
-                    />
+                contacts.map(contact) => (
+                    <ContactCard />                                          />
                 ))
             ) : (
                 <p>No contacts found.</p>

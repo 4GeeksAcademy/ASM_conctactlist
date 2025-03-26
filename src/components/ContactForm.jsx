@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import useGlobalReducer from "../hooks/useGlobalReducer";
+
 
 function ContactForm({ addContact }) {
     const [formData, setFormData] = useState({
@@ -7,6 +9,8 @@ function ContactForm({ addContact }) {
         phone: "",
         address: "",
     });
+
+    
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -64,7 +68,7 @@ function ContactForm({ addContact }) {
                     onChange={handleChange}
                 />
             </div>
-            <button className="btn btn-primary" type="submit">Save Contact</button>
+            <button className="btn btn-primary" type="submit" onClick = {addContact}  >Save Contact</button>
         </form>
     );
 }

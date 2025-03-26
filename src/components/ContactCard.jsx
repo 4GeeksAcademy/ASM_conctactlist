@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import useGlobalReducer from "../hooks/useGlobalReducer";
 
 
 
-function ContactCard({ contact, deleteContact }) {
+function ContactCard() {
+
+    const {store, dispatch} = useGlobalReducer();
     const handleDelete = () => {
         {deleteContact(contact.id)}
         return (
